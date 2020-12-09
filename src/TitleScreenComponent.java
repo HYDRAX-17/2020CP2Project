@@ -7,7 +7,7 @@ import java.awt.geom.Ellipse2D;
 import java.awt.Color;
 import java.lang.Math.*;
 
-public class Component extends JComponent {
+public class TitleScreenComponent extends JComponent {
   public boolean problemType;
   public void paintComponent(Graphics g) {
     Graphics2D g2 = (Graphics2D) g;
