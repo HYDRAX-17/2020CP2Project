@@ -10,5 +10,6 @@ import java.lang.Math.*;
 public class OutputScreenComponent extends JComponent {
   public void paintComponent(Graphics g) {
     Graphics2D g2 = (Graphics2D) g;
+    g2.drawString("Screen 2", 150,30);
   }
 }

@@ -6,9 +6,8 @@ public class Grapher {
     frame.setSize(1000,600);
     frame.setTitle("Projectile Motion Calculator");
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    Component component = new Component();
-    frame.add(component);
-    frame.setVisible(true);
+    InputScreenComponent screen2 = new InputScreenComponent();
+    OutputScreenComponent screen3 = new OutputScreenComponent();
+    TitleScreenComponent screen1 = new TitleScreenComponent();
   }
-  
 }

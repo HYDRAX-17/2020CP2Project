@@ -11,5 +11,6 @@ public class TitleScreenComponent extends JComponent {
   public boolean problemType;
   public void paintComponent(Graphics g) {
     Graphics2D g2 = (Graphics2D) g;
+    g2.drawString("TITLE SCREEN", 150,30);
   }
 }
