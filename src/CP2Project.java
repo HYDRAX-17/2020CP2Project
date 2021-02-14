@@ -1,6 +1,10 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 
 public class CP2Project extends JFrame {
   final static int WINDOW_WIDTH = 1000;
@@ -27,6 +31,8 @@ public class CP2Project extends JFrame {
       JPanel card2 = new JPanel(null);
       JPanel card3 = new JPanel(null);
       Color black = new Color(0,0,0);
+      JLabel titleImage = new JLabel(new ImageIcon("C:\\Users\\henry\\OneDrive\\Documents\\GitHub\\2020CP2Project\\doc\\TitleImage.png"));
+      titleImage.setBounds(150,50,700,205);
       Font font = new Font("Gill Sans MT", Font.PLAIN, 18);
       Font titleFont = new Font("Gill Sans MT", Font.BOLD,21);
       main.add(card1, "Main Screen");
@@ -38,16 +44,17 @@ public class CP2Project extends JFrame {
 
   // Creation of the Main Screen Panel
       card1.setBackground(black);
+      card1.add(titleImage);
       // Buttons
-      JButton toFreeFall = new JButton("Free Fall Motion");
-      toFreeFall.setBounds(WINDOW_WIDTH/2-225,WINDOW_HEIGHT/2-100,200,200);
+      JButton toFreeFall = new JButton(new ImageIcon("C:\\Users\\henry\\OneDrive\\Documents\\GitHub\\2020CP2Project\\doc\\FreeFallButtonImage.png"));
+      toFreeFall.setBounds(WINDOW_WIDTH/2-375,WINDOW_HEIGHT/2-50,300,300);
       toFreeFall.addActionListener(new ActionListener() {
         public void actionPerformed(ActionEvent e) {
           card.show(main, "Free Fall");
         }
       });
-      JButton toProjectile = new JButton("Projectile Motion");
-      toProjectile.setBounds(WINDOW_WIDTH/2+25,WINDOW_HEIGHT/2-100,200,200);
+      JButton toProjectile = new JButton(new ImageIcon("C:\\Users\\henry\\OneDrive\\Documents\\GitHub\\2020CP2Project\\doc\\ProjectileButtonImage.png"));
+      toProjectile.setBounds(WINDOW_WIDTH/2+75,WINDOW_HEIGHT/2-50,300,300);
       toProjectile.addActionListener(new ActionListener() {
         public void actionPerformed(ActionEvent e) {
           card.show(main, "Projectile");
@@ -208,7 +215,7 @@ public class CP2Project extends JFrame {
       card3.setBackground(black);
       JButton toMain2 = new JButton("Main Screen");
       toMain2.setBounds(10,10,120,45);
-      toMain2.setFont(new Font("Verdana", Font.PLAIN, 12));
+      toMain2.setFont(new Font("Gill Sans MT", Font.PLAIN, 15));
       toMain2.addActionListener(new ActionListener() {
         public void actionPerformed(ActionEvent e) {
           card.show(main, "Main Screen");
