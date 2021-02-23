@@ -1,6 +1,6 @@
-![Logo](https://github.com/HenryChristiansen/2020CP2Project/blob/main/doc/Logo.png)
+![CP2ProjectTitle](https://github.com/HenryChristiansen/2020CP2Project/blob/main/doc/CP2ProjectTitle.png)
 
-This project is a physics calculator that can do everything related to Projectile Motion including computation and graphing.
+This project is a physics calculator that can do everything related to Projectile and Free Fall motion including computation and graphing.
 
 ## Documentation
 1. Video of Product
