@@ -35,6 +35,10 @@ public class CalcForP {
     if (!f.equals("")) {
       maxH = Double.parseDouble(f);
     }
+    if (a.equals("") && b.equals("") && c.equals("") && d.equals("") && e.equals("") && f.equals("")) {
+      errorMessage = true;
+      // do stuff
+    }
     // Figure out which calculation to do
     if (d.equals("") && e.equals("") && f.equals("")) {
       errorMessage = false;

@@ -1,10 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import javax.imageio.ImageIO;
 
 public class CP2Project extends JFrame {
   final static int WINDOW_WIDTH = 1000;
@@ -70,9 +66,9 @@ public class CP2Project extends JFrame {
       grapher.setBorder(BorderFactory.createLineBorder(Color.white));
       grapher.setBounds(10,400, 965, 250);
       card2.add(grapher);
-      JButton toMain1, calculate;
-      JTextField iVelocity, angle, h, totalTime, range, maxH;
-      JLabel graphTitle, results, errorMessage, inputMess, iVMess, aMess, hMess, tTMess, rMess,mHMess, iVRes, aRes, hRes, tRes, rRes, hmRes;
+      JButton toMain1, calculate, calcParam;
+      JTextField time, iVelocity, angle, h, totalTime, range, maxH;
+      JLabel timeText, pTitle ,graphTitle, results, errorMessage, inputMess, iVMess, aMess, hMess, tTMess, rMess,mHMess, iVRes, aRes, hRes, tRes, rRes, hmRes;
       // JTextFields
       iVelocity = new JTextField("");
       angle = new JTextField("");
@@ -80,6 +76,8 @@ public class CP2Project extends JFrame {
       totalTime = new JTextField("");
       range = new JTextField("");
       maxH = new JTextField("");
+      time = new JTextField("");
+      time.setBounds(780, 105, 50,25);
       iVelocity.setBounds(280,100, 50, 25);
       angle.setBounds(280,135, 50, 25);
       h.setBounds(280,170, 50, 25);
@@ -92,8 +90,16 @@ public class CP2Project extends JFrame {
       totalTime.setFont(font);
       range.setFont(font);
       maxH.setFont(font);
-      card2.add(iVelocity); card2.add(angle); card2.add(h); card2.add(totalTime); card2.add(range); card2.add(maxH);
+      card2.add(time); card2.add(iVelocity); card2.add(angle); card2.add(h); card2.add(totalTime); card2.add(range); card2.add(maxH);
       // JLabels
+      timeText = new JLabel ("Time (s): ");
+      timeText.setBounds(710,105,80,30);
+      timeText.setFont(font);
+      timeText.setForeground(Color.white);
+      pTitle = new JLabel ("Parameters at given time: ");
+      pTitle.setBounds(690,65, 300, 30);
+      pTitle.setFont(titleFont);
+      pTitle.setForeground(Color.white);
       graphTitle = new JLabel("Graph of Motion: ");
       graphTitle.setForeground(Color.white);
       graphTitle.setFont(titleFont);
@@ -101,37 +107,37 @@ public class CP2Project extends JFrame {
       results = new JLabel("Results: ");
       results.setForeground(Color.white);
       results.setFont(titleFont);
-      results.setBounds(400,65,130,30);
+      results.setBounds(390,65,130,30);
       iVRes = new JLabel();
       iVRes.setVisible(false);
       iVRes.setForeground(Color.white);
       iVRes.setFont(font);
-      iVRes.setBounds(400, 100, 300,25);
+      iVRes.setBounds(410, 100, 300,25);
       aRes = new JLabel();
       aRes.setVisible(false);
       aRes.setForeground(Color.white);
       aRes.setFont(font);
-      aRes.setBounds(400, 135, 300,25);
+      aRes.setBounds(410, 135, 300,25);
       hRes = new JLabel();
       hRes.setVisible(false);
       hRes.setForeground(Color.white);
       hRes.setFont(font);
-      hRes.setBounds(400, 170, 300,25);
+      hRes.setBounds(410, 170, 300,25);
       tRes = new JLabel();
       tRes.setVisible(false);
       tRes.setForeground(Color.white);
       tRes.setFont(font);
-      tRes.setBounds(400, 205, 300,25);
+      tRes.setBounds(410, 205, 300,25);
       rRes = new JLabel();
       rRes.setVisible(false);
       rRes.setForeground(Color.white);
       rRes.setFont(font);
-      rRes.setBounds(400, 240, 300,25);
+      rRes.setBounds(410, 240, 300,25);
       hmRes = new JLabel();
       hmRes.setVisible(false);
       hmRes.setForeground(Color.white);
       hmRes.setFont(font);
-      hmRes.setBounds(400, 275, 300,25);
+      hmRes.setBounds(410, 275, 300,25);
       inputMess = new JLabel("Input the information you know:");
       inputMess.setBounds(10,65,320,30);
       inputMess.setFont(titleFont);
@@ -166,11 +172,10 @@ public class CP2Project extends JFrame {
       errorMessage.setForeground(Color.red);
       errorMessage.setFont(new Font("Gill Sans MT", Font.PLAIN, 18));
       card2.add(errorMessage); card2.add(inputMess); card2.add(iVMess); card2.add(aMess); card2.add(hMess); card2.add(tTMess); card2.add(rMess); card2.add(mHMess); card2.add(results);
-      card2.add(iVRes); card2.add(aRes); card2.add(hRes); card2.add(tRes); card2.add(rRes); card2.add(hmRes); card2.add(graphTitle);
+      card2.add(timeText); card2.add(pTitle); card2.add(iVRes); card2.add(aRes); card2.add(hRes); card2.add(tRes); card2.add(rRes); card2.add(hmRes); card2.add(graphTitle);
       // Buttons
-      calculate = new JButton("Calculate");
-      calculate.setBounds(260, 320, 90,35);
-      calculate.setFont(new Font("Gill Sans MT", Font.PLAIN, 14));
+      calculate = new JButton(new ImageIcon("C:\\Users\\henry\\OneDrive\\Documents\\GitHub\\2020CP2Project\\doc\\CalculateButtonIcon.png"));
+      calculate.setBounds(260, 320, 90, 37);
       calculate.addActionListener(new ActionListener () {
         public void actionPerformed(ActionEvent e) {
           calcForP.calculate(iVelocity.getText(), angle.getText(), h.getText(), totalTime.getText(), range.getText(), maxH.getText());
@@ -200,22 +205,22 @@ public class CP2Project extends JFrame {
           }
         }
       });
-      toMain1 = new JButton("Main Screen");
-      toMain1.setBounds(10,10,120,45);
-      toMain1.setFont(new Font("Gill Sans MT",Font.PLAIN,15));
+      toMain1 = new JButton(new ImageIcon("C:\\Users\\henry\\OneDrive\\Documents\\GitHub\\2020CP2Project\\doc\\MainScreenButtonIcon.png"));
+      toMain1.setBounds(10,10,119,46);
       toMain1.addActionListener(new ActionListener() {
         public void actionPerformed(ActionEvent e) {
           card.show(main, "Main Screen");
         }
       });
-      card2.add(calculate); card2.add(toMain1);
+      calcParam = new JButton(new ImageIcon("C:\\Users\\henry\\OneDrive\\Documents\\GitHub\\2020CP2Project\\doc\\CalculateButtonIcon.png"));
+      calcParam.setBounds(830,106, 90,37);
+      card2.add(calcParam); card2.add(calculate); card2.add(toMain1);
 
 
   // Creation of the Free Fall Screen Panel
       card3.setBackground(black);
-      JButton toMain2 = new JButton("Main Screen");
-      toMain2.setBounds(10,10,120,45);
-      toMain2.setFont(new Font("Gill Sans MT", Font.PLAIN, 15));
+      JButton toMain2 = new JButton(new ImageIcon("C:\\Users\\henry\\OneDrive\\Documents\\GitHub\\2020CP2Project\\doc\\MainScreenButtonIcon.png"));
+      toMain2.setBounds(10,10,119,47);
       toMain2.addActionListener(new ActionListener() {
         public void actionPerformed(ActionEvent e) {
           card.show(main, "Main Screen");
