@@ -5,17 +5,26 @@ import javax.swing.border.*;
 import java.lang.Math.*;
 
 class Grapher extends JPanel {
+    int range, iV, angle, h, maxH;
+    Grapher (double iV, double angleInDegrees, double h, double range, double maxH) {
+      this.iV = (int) iV;
+      this.angle = (int) angleInDegrees;
+      this.h = (int) h;
+      this.range = (int) range;
+      this.maxH = (int) maxH;
+    }
+
     public void paintComponent(Graphics g) {
       super.paintComponent(g);
-      // CalcForP a = new CalcForP();
-      // g.setPaint(255,0,0);
-      // int x = 0;
-      // int y = 250;
-      // int yMax = a.maxH + 20.0;
-      // int xMax = a.range + 80.0;
-      // while (x < xMax) {
-      //   y = -(a.h-4.9*Math.pow(x/(a.iVelocity*Math.cos(a.angle)),2)+(Math.tan(a.angle)*x));
-      //   g.fillOval(x,y,3,3);
-      // }
+      int[] array = new int [range];
+      if (range != 0) {
+        for (int i = 0; i < range; i ++) {
+          array[i] = (int) (h - 4.9*Math.pow((i/(iV*Math.cos(angle * (Math.PI/180)))),2) + Math.tan(angle*(Math.PI/180))*i);
+        }
+        for (int x = 0; x < range; x++) {
+          int y = (int) (-array[x] + maxH+30);
+          g.drawOval(x,y,1,1);
+        }
+      }
     }
 }

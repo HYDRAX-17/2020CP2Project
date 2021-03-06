@@ -61,11 +61,6 @@ public class CP2Project extends JFrame {
 
   // Creation of the Projectile Screen Panel
       card2.setBackground(black);
-      Grapher grapher = new Grapher();
-      grapher.setBackground(black);
-      grapher.setBorder(BorderFactory.createLineBorder(Color.white));
-      grapher.setBounds(10,400, 965, 250);
-      card2.add(grapher);
       JButton toMain1, calculate, calcParam;
       JTextField time, iVelocity, angle, h, totalTime, range, maxH;
       JLabel timeText, pTitle ,graphTitle, results, errorMessage, inputMess, iVMess, aMess, hMess, tTMess, rMess,mHMess, iVRes, aRes, hRes, tRes, rRes, hmRes;
@@ -187,7 +182,6 @@ public class CP2Project extends JFrame {
             tRes.setVisible(false);
             rRes.setVisible(false);
             hmRes.setVisible(false);
-            //grapher.getContentPane().removeAll();
           } else {
             iVRes.setText("Initial Velocity = " + calcForP.getString(calcForP.iVelocity) + " m/s");
             iVRes.setVisible(true);
@@ -201,7 +195,11 @@ public class CP2Project extends JFrame {
             rRes.setVisible(true);
             hmRes.setText("Maximum Height Reached = " + calcForP.getString(calcForP.maxH) + " m");
             hmRes.setVisible(true);
-            grapher.repaint();
+            Grapher grapher = new Grapher(calcForP.iVelocity, calcForP.angleInDegrees, calcForP.h, calcForP.range, calcForP.maxH);
+            grapher.setBackground(black);
+            grapher.setBorder(BorderFactory.createLineBorder(Color.white));
+            grapher.setBounds(10,400, 965, 250);
+            card2.add(grapher);
           }
         }
       });

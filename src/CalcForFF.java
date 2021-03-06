@@ -1,5 +1,5 @@
 import java.lang.Math.*;
 
-public class CalculateForFreeFall {
-  
+public class CalcForFF {
+
 }
