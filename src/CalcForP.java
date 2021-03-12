@@ -10,11 +10,16 @@ public class CalcForP {
   public double totalTime;
   public double range;
   public double iVelocity;
+
   public double velocity;
   public double time;
+  public double height;
+  public double pVX,pVY;
+  public double distFromLaunch;
+
   public boolean errorMessage = false;
 
-  // Update knowns
+  // @param Strings from text boxes
   public void calculate (String a, String b, String c, String d, String e, String f) {
     if (!a.equals("")) {
       iVelocity = Double.parseDouble(a);
@@ -143,13 +148,28 @@ public class CalcForP {
     } else {
       errorMessage = true;
     }
+    if (iVelocity == 0 && angle ==0 && totalTime ==0 && range == 0 && maxH ==0&&h==0) {
+      errorMessage = true;
+    }
   }
-
+  // @param double to be converted to string
+  // @return string of double in the right format
   public String getString(double a) {
     DecimalFormat df = new DecimalFormat("#.##");
     Double d = a;
     String b = df.format(d);
     return b;
+  }
+  // @param string of data in the time text box
+  public void calcParametersAtTime (String t) {
+    time = Double.parseDouble(t);
+    if (time < totalTime && time > 0) {
+      pVX = vx;
+      pVY = vy - g*time;
+      velocity = Math.sqrt(Math.pow(pVX,2) + Math.pow(pVY,2));
+      height = (vy*time)-(0.5*g*Math.pow(time,2));
+      distFromLaunch = vx*time;
+    }
   }
 
   public boolean getErrorMessage() {
