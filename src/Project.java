@@ -1,29 +1,29 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
+
+/*
+ * Main Class for the Projectile Motion Calculator.
+ * @author Henry Christiansen
+ * @version 0.1.1
+ * @since 03-25-2020
+ */
 
 public class Project extends JFrame {
-  final static int WINDOW_WIDTH = 1000;
-  final static int WINDOW_HEIGHT = 700;
-  static CardLayout card = new CardLayout();
-  static JPanel main = new JPanel(card);
-  private TitleScreen card1 = new TitleScreen();
-  private ProjectileScreen card2 = new ProjectileScreen();
-  private FreeFallScreen card3 = new FreeFallScreen();
-
+   ProjectilePanel projectilePanel = new ProjectilePanel();
+   // Constructor
    Project() {
-     main.add(card1, "Title Screen");
-     main.add(card2, "Projectile");
-     main.add(card3, "Free Fall");
-     add(main);
-     card.show(main, "Title Screen");
+     add(projectilePanel);
    }
-
+   /*
+    Main method, creates the ProjectileMotionCalculator object
+    @param args
+    @return nothing
+   */
    public static void main(String[] args) {
      Project project = new Project();
      project.setVisible(true);
      project.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
      project.setResizable(false);
-     project.setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
+     project.setSize(1000,700);
    }
 }
